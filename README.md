@@ -39,7 +39,7 @@ contact-form-project/ <br>├── contact.php # HTML file with the contact for
 **Configure Database Connection:**
 Update the database connection settings in contact_process.php:
 
-    ```php
+ ```php
       <?php
     // Database configuration
     $servername = "localhost";  // Replace with your database server
