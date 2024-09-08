@@ -39,42 +39,42 @@ contact-form-project/ <br>├── contact.php # HTML file with the contact for
 **Configure Database Connection:**
 Update the database connection settings in contact_process.php:
 
- ```php
-      <?php
-    // Database configuration
-    $servername = "localhost";  // Replace with your database server
-    $username = "root";         // Replace with your database username
-    $password = "";             // Replace with your database password
-    $dbname = "contact_form";   // Replace with your database name
-    
-    // Create a connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    
-    // Check the connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    
-    // Retrieve form data
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $message = htmlspecialchars($_POST['message']);
-    
-    // Prepare and bind
-    $stmt = $conn->prepare("INSERT INTO messages (name, email, message) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $email, $message);
-    
-    // Execute the statement
-    if ($stmt->execute()) {
-        echo "<p>Message sent successfully!</p>";
-    } else {
-        echo "<p>Error: " . $stmt->error . "</p>";
-    }
-    
-    // Close the statement and connection
-    $stmt->close();
-    $conn->close();
-    ?>
+   
+          <?php
+          // Database configuration
+          $servername = "localhost";  // Replace with your database server
+          $username = "root";         // Replace with your database username
+          $password = "";             // Replace with your database password
+          $dbname = "contact_form";   // Replace with your database name
+          
+          // Create a connection
+          $conn = new mysqli($servername, $username, $password, $dbname);
+          
+          // Check the connection
+          if ($conn->connect_error) {
+              die("Connection failed: " . $conn->connect_error);
+          }
+          
+          // Retrieve form data
+          $name = htmlspecialchars($_POST['name']);
+          $email = htmlspecialchars($_POST['email']);
+          $message = htmlspecialchars($_POST['message']);
+          
+          // Prepare and bind
+          $stmt = $conn->prepare("INSERT INTO messages (name, email, message) VALUES (?, ?, ?)");
+          $stmt->bind_param("sss", $name, $email, $message);
+          
+          // Execute the statement
+          if ($stmt->execute()) {
+              echo "<p>Message sent successfully!</p>";
+          } else {
+              echo "<p>Error: " . $stmt->error . "</p>";
+          }
+          
+          // Close the statement and connection
+          $stmt->close();
+          $conn->close();
+          ?>
 
 ## CSS Styling
 
